@@ -93,7 +93,7 @@
 </template>
 
 <script>
-// import { search } from '@/api/book'
+// import { search } from '@/api/good'
 // import { getOptions } from '@/api/user'
 
 export default {
@@ -107,7 +107,7 @@ export default {
   },
   mounted() {
     // 获取用户options
-    // getOptions('book').then(res => {
+    // getOptions('good').then(res => {
     //   res.data.tags.forEach((i) => {
     //     this.tags_filters.push({
     //       'text': i,
@@ -128,7 +128,7 @@ export default {
     // 代码冗余 - 同list .......
     handleEdit(index, row) {
       this.$router.push({
-        name: 'book_edit',
+        name: 'good_edit',
         params: { id: row._id }
       })
     },
@@ -142,7 +142,7 @@ export default {
     },
     handleClick(val) {
       this.$router.push({
-        name: 'book_detail',
+        name: 'good_detail',
         params: { id: val._id }
       })
     }

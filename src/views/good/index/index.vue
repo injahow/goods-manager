@@ -102,7 +102,7 @@
         </el-radio-group>
       </el-form-item>
     </el-form>
-    <BookTable
+    <GoodSpuTable
       :list-loading="listLoading"
       :table-data="indexData"
       :tags-filters="tags_filters"
@@ -111,14 +111,14 @@
 </template>
 
 <script>
-import BookTable from '@/views/book/components/BookTable'
-// import { getIndex } from '@/api/book'
+import GoodSpuTable from '@/views/good/components/GoodSpuTable'
+// import { getIndex } from '@/api/good'
 // import { getOptions } from '@/api/user'
 
 export default {
-  name: 'BookIndex',
+  name: 'GoodSpuIndex',
   components: {
-    BookTable
+    GoodSpuTable
   },
   data() {
     return {
@@ -140,7 +140,7 @@ export default {
   },
   mounted() {
     this.resetData()
-    // getOptions('book').then(res => {
+    // getOptions('good').then(res => {
     //   this.options.type_name = ['全部'].concat(res.data.type_name)
     //   this.options.region = ['全部'].concat(res.data.region)
     //   this.options.tags = ['全部'].concat(res.data.tags)
@@ -170,7 +170,7 @@ export default {
     // 冗余-list
     handleEdit(row) {
       this.$router.push({
-        name: 'book_edit',
+        name: 'good_edit',
         params: { id: row._id }
       })
     },
@@ -184,7 +184,7 @@ export default {
     },
     handleClick(val) {
       this.$router.push({
-        name: 'book_detail',
+        name: 'good_detail',
         params: { id: val._id }
       })
     },

@@ -49,7 +49,7 @@
 </template>
 
 <script>
-// import { getDetail } from '@/api/book'
+// import { getDetail } from '@/api/good'
 export default {
   data() {
     return {

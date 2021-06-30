@@ -5,6 +5,7 @@
     width="100%"
     border
   >
+
     <el-table-column
       label="封面"
       width="130"
@@ -18,12 +19,14 @@
         />
       </template>
     </el-table-column>
+
     <el-table-column
       prop="name"
       label="名称"
       width="140"
       sortable
     />
+
     <el-table-column
       prop="tags"
       label="标签"
@@ -39,12 +42,7 @@
         >{{ tag }}</el-tag>
       </template>
     </el-table-column>
-    <el-table-column
-      prop="region"
-      label="地区"
-      width="90"
-      sortable
-    />
+
     <el-table-column
       prop="publish"
       label="时间"
@@ -67,24 +65,19 @@
         >编辑</el-button>
       </template>
     </el-table-column>
+
   </el-table>
 </template>
 
 <script>
 export default {
-  name: 'BookTable',
+  name: 'GoodSpuTable',
   props: {
     listLoading: {
       type: Boolean,
       default: true
     },
     tableData: {
-      type: Array,
-      default() {
-        return []
-      }
-    },
-    tagsFilters: {
       type: Array,
       default() {
         return []

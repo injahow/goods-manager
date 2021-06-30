@@ -56,96 +56,96 @@ export const constantRoutes = [
   },
 
   {
-    path: '/book',
+    path: '/good',
     component: Layout,
-    redirect: '/book/table',
+    redirect: '/good/table',
     name: 'Example',
-    meta: { title: '图书管理', icon: 'el-icon-s-help' },
+    meta: { title: '商品管理', icon: 'el-icon-s-help' },
     children: [
       {
         path: 'table',
         name: 'Table',
-        component: () => import('@/views/book/list'),
-        meta: { title: '图书列表', icon: 'table' }
+        component: () => import('@/views/good/list'),
+        meta: { title: '商品列表', icon: 'table' }
       },
       {
         path: 'index',
         name: 'Index',
-        component: () => import('@/views/book/index'),
-        meta: { title: '图书引索', icon: 'table' }
+        component: () => import('@/views/good/index'),
+        meta: { title: '商品引索', icon: 'table' }
       },
       {
         path: 'add',
         name: 'addTable',
-        component: () => import('@/views/book/add'),
-        meta: { title: '添加图书', icon: 'form' }
+        component: () => import('@/views/good/add'),
+        meta: { title: '添加商品', icon: 'form' }
       },
       {
         path: 'edit',
         name: 'Edit',
-        component: () => import('@/views/book/edit'),
-        meta: { title: '修改图书', icon: 'form' }
+        component: () => import('@/views/good/edit'),
+        meta: { title: '修改商品', icon: 'form' }
       },
       {
         path: 'search',
         name: 'Search',
-        component: () => import('@/views/book/search'),
-        meta: { title: '搜索图书', icon: 'table' }
+        component: () => import('@/views/good/search'),
+        meta: { title: '搜索商品', icon: 'table' }
       }
     ]
   },
 
   {
-    path: '/book_type',
+    path: '/good_type',
     component: Layout,
-    redirect: '/book/table',
+    redirect: '/good/table',
     name: 'Example',
     meta: { title: '类别管理', icon: 'el-icon-s-help' },
     children: [
       {
         path: 'table',
         name: 'Table',
-        component: () => import('@/views/book/list'),
+        component: () => import('@/views/good/list'),
         meta: { title: '类别列表', icon: 'table' }
       },
       {
         path: 'add',
         name: 'addTable',
-        component: () => import('@/views/book/list'),
+        component: () => import('@/views/good/list'),
         meta: { title: '添加类别', icon: 'form' }
       },
       {
         path: 'modify',
         name: 'modify',
-        component: () => import('@/views/book/list'),
+        component: () => import('@/views/good/list'),
         meta: { title: '修改类别', icon: 'form' }
       }
     ]
   },
 
   {
-    path: '/book_tag',
+    path: '/good_tag',
     component: Layout,
-    redirect: '/book/table',
+    redirect: '/good/table',
     name: 'Example',
     meta: { title: '标签管理', icon: 'el-icon-s-help' },
     children: [
       {
         path: 'table',
         name: 'Table',
-        component: () => import('@/views/book/list'),
+        component: () => import('@/views/good/list'),
         meta: { title: '标签列表', icon: 'table' }
       },
       {
         path: 'add',
         name: 'addTable',
-        component: () => import('@/views/book/list'),
+        component: () => import('@/views/good/list'),
         meta: { title: '添加标签', icon: 'form' }
       },
       {
         path: 'modify',
         name: 'modify',
-        component: () => import('@/views/book/list'),
+        component: () => import('@/views/good/list'),
         meta: { title: '修改标签', icon: 'form' }
       }
     ]

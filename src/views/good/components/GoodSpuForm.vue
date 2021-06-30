@@ -96,9 +96,9 @@
 <script>
 // import { getOptions } from "@/api/user";
 export default {
-  name: 'BookForm',
+  name: 'GoodSpuForm',
   props: {
-    bookForm: {
+    formData: {
       type: Object,
       default() {
         return {}
