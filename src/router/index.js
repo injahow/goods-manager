@@ -63,8 +63,8 @@ export const constantRoutes = [
     meta: { title: '商品管理', icon: 'el-icon-s-help' },
     children: [
       {
-        path: 'table',
-        name: 'Table',
+        path: 'list',
+        name: 'List',
         component: () => import('@/views/good/list'),
         meta: { title: '商品列表', icon: 'table' }
       },

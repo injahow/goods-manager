@@ -25,7 +25,9 @@ export default {
   mounted() {
     this.listLoading = true
     getList().then(res => {
-      this.tableData = res.data
+      this.pageNo = res.data.pageNo
+      this.total = res.data.total
+      this.tableData = res.data.list
       this.listLoading = false
     }).catch(() => {
       this.listLoading = false

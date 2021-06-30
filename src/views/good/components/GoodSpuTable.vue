@@ -7,47 +7,68 @@
   >
 
     <el-table-column
-      label="封面"
-      width="130"
-    >
-      <template slot-scope="scope">
-        <el-image
-          :src="scope.row.cover"
-          alt
-          style="width:100px;height:130px;"
-          fit="fit"
-        />
-      </template>
-    </el-table-column>
+      prop="goodId"
+      label="编号"
+      width="50"
+      sortable
+    />
 
     <el-table-column
-      prop="name"
+      prop="goodName"
       label="名称"
       width="140"
       sortable
     />
 
     <el-table-column
-      prop="tags"
-      label="标签"
+      prop="goodName"
+      label="名称"
       width="140"
-      :filters="tagsFilters"
-      :filter-method="filterHandler"
+      sortable
+    />
+
+    <el-table-column
+      prop="typeId"
+      label="分类"
+      width="140"
+      sortable
     >
-      <template slot-scope="scope">
-        <el-tag
-          v-for="tag in scope.row.tags"
-          :key="tag"
-          effect="plain"
-        >{{ tag }}</el-tag>
-      </template>
+      分类{{ typeId }}
     </el-table-column>
 
     <el-table-column
-      prop="publish"
-      label="时间"
+      prop="soldNum"
+      label="卖出"
+      width="100"
       sortable
-      width="90"
+    />
+
+    <el-table-column
+      prop="status"
+      label="状态"
+      width="60"
+      sortable
+    />
+
+    <el-table-column
+      prop="context"
+      label="详情"
+      width="100"
+      sortable
+    />
+
+    <el-table-column
+      prop="createTime"
+      label="创建时间"
+      sortable
+      width="130"
+    />
+
+    <el-table-column
+      prop="updateTime"
+      label="更新时间"
+      sortable
+      width="130"
     />
 
     <el-table-column
@@ -91,14 +112,15 @@ export default {
         params: { id: row._id }
       })
     },
-    filterHandler(value, row, column) {
-      const property = column['property']
-      if (row[property]) {
-        return row[property].indexOf(value) > -1
-      } else {
-        return false
-      }
-    },
+    // filterHandler(value, row, column) {
+    //   const property = column['property']
+    //   if (row[property]) {
+    //     return row[property].indexOf(value) > -1
+    //   } else {
+    //     return false
+    //   }
+    // },
+
     handleClick(val) {
       this.$router.push({
         name: 'book_detail',

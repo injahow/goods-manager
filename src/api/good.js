@@ -7,3 +7,11 @@ export function getList(params) {
     params
   })
 }
+
+export function editGood(params) {
+  return request({
+    url: '/good/edit',
+    method: 'post',
+    params
+  })
+}
