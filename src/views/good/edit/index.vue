@@ -3,6 +3,7 @@
     <GoodSpuForm
       :form-data="good_form"
       :on-submit="onSubmit"
+      :type-list="type_list"
       :reset-value="resetValue"
       reset-button-show
     />
@@ -12,6 +13,7 @@
 <script>
 import GoodSpuForm from '@/views/good/components/GoodSpuForm'
 import { editGood, getGoodById } from '@/api/good'
+import { getNameList } from '@/api/good_type'
 import { compareForm } from '@/utils/check-changes'
 
 export default {
@@ -23,9 +25,10 @@ export default {
     return {
       old_good_form: {},
       good_form: {},
-      type_name_options: ['type1', 'type2', 'type3'],
+      type_list: [],
       onSubmit: (formName) => {
         // 判断修改项
+        console.log(formName)
         const res = compareForm(formName, this.old_good_form)
         if (res.is_changed) {
           const good = formName
@@ -51,9 +54,10 @@ export default {
         this.old_good_form = res.data
         this.good_form = Object.assign({}, this.old_good_form)
       })
-      .catch((error) => {
-        this.$message.error(error)
-      })
+    getNameList().then((res) => {
+      this.type_list = res.data
+    })
+
   },
   methods: {
     resetValue(name) {

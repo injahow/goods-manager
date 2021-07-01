@@ -18,7 +18,6 @@ import GoodSpuTable from '@/views/good/components/GoodSpuTable'
 import { getList } from '@/api/good'
 
 export default {
-  name: 'GoodSpuList',
   components: {
     GoodSpuTable, PageHelper
   },

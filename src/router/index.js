@@ -49,17 +49,17 @@ export const constantRoutes = [
     redirect: '/dashboard',
     children: [{
       path: 'dashboard',
-      name: 'Dashboard',
+      name: '仪表盘',
       component: () => import('@/views/dashboard/index'),
-      meta: { title: '主页', icon: 'dashboard' }
+      meta: { title: '仪表盘', icon: 'dashboard' }
     }]
   },
 
   {
     path: '/good',
     component: Layout,
-    redirect: '/good/table',
-    name: 'Example',
+    redirect: '/good/list',
+    name: 'good_list',
     meta: { title: '商品管理', icon: 'el-icon-s-help' },
     children: [
       {
@@ -76,7 +76,7 @@ export const constantRoutes = [
       },
       {
         path: 'search',
-        name: 'Search',
+        name: 'good_search',
         component: () => import('@/views/good/search'),
         meta: { title: '搜索商品', icon: 'table' }
       },
@@ -100,7 +100,7 @@ export const constantRoutes = [
   {
     path: '/good_type',
     component: Layout,
-    redirect: '/good/table',
+    redirect: '/good/list',
     name: 'Example',
     meta: { title: '类别管理', icon: 'el-icon-s-help' },
     children: [

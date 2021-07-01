@@ -10,8 +10,9 @@ export function getList(pageNo, pageSize) {
 
 export function getGoodById(goodId) {
   return request({
-    url: `/good/${goodId}`,
-    method: 'get'
+    url: '/good/find',
+    method: 'get',
+    params: { goodId }
   })
 }
 

@@ -10,9 +10,13 @@ export function compareForm(form, old_form) {
   for (const i in old_form) {
     // 注意引用类型 object !
     if (typeof form[i] === 'object') {
-      if (form[i].toString() !== old_form[i].toString()) {
-        is_changed = true
-        break
+      if (form[i] === null && old_form[i] === null) {
+        continue
+      } else if (form[i] !== null && old_form[i] !== null) {
+        if (form[i].toString() !== old_form[i].toString()) {
+          is_changed = true
+          break
+        }
       }
     } else {
       if (form[i] !== old_form[i]) {

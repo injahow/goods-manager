@@ -7,6 +7,13 @@ export function getList() {
   })
 }
 
+export function getNameList() {
+  return request({
+    url: '/good_type/list_name',
+    method: 'get'
+  })
+}
+
 export function editGood(goodType) {
   return request({
     url: '/good_type/edit',

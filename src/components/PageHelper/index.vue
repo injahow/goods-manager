@@ -1,15 +1,17 @@
 <template>
-  <div class="block">
-    <el-pagination
-      :current-page="currentPage"
-      :page-sizes="[10, 50, 100, 200, 400]"
-      :page-size="pageSize"
-      layout="total, sizes, prev, pager, next, jumper"
-      :total="total"
-      @size-change="handleSizeChange"
-      @current-change="handleCurrentChange"
-    />
-  </div>
+  <el-col :span="8"><div class="grid-content bg-purple-light">
+    <div class="block">
+      <el-pagination
+        :current-page="currentPage"
+        :page-sizes="[10, 50, 100, 200, 400]"
+        :page-size="pageSize"
+        layout="total, sizes, prev, pager, next, jumper"
+        :total="total"
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+      />
+    </div>
+  </div></el-col>
 </template>
 <script>
 export default {

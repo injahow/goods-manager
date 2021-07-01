@@ -16,36 +16,35 @@
         type="textarea"
         size="500"
         placeholder="请输入详情"
+        :autosize="{minRows:4,maxRows:8}"
       />
       <el-button v-if="resetButtonShow" @click="resetValue('context')">重置</el-button>
     </el-form-item>
 
     <el-form-item label="类型">
       <el-select
-        v-model="formData.goodType.typeName"
+        v-model="formData.goodType.typeId"
         placeholder="请选择类型"
         style="width: 100%"
-      />
+      >
+        <el-option
+          v-for="item in typeList"
+          :key="item.typeId"
+          :label="item.typeName"
+          :value="item.typeId"
+        />
+      </el-select>
+
       <el-button v-if="resetButtonShow" @click="resetValue('type_name')">重置</el-button>
     </el-form-item>
 
     <el-form-item label="销量">
-      <el-input
-        v-model="formData.soldNum"
-        type="textarea"
-        autosize
-        placeholder=""
-      />
+      <el-input v-model="formData.soldNum" />
       <el-button v-if="resetButtonShow" @click="resetValue('soldNum')">重置</el-button>
     </el-form-item>
 
     <el-form-item label="状态">
-      <el-input
-        v-model="formData.status"
-        type="textarea"
-        autosize
-        placeholder="0-下架，1-上架？？"
-      />
+      <el-input v-model="formData.status" />
       <el-button v-if="resetButtonShow" @click="resetValue('status')">重置</el-button>
     </el-form-item>
 
@@ -53,6 +52,7 @@
       <el-button type="primary" @click="onSubmit(formData)">提交</el-button>
       <el-button v-if="resetButtonShow" @click="onClose()">取消</el-button>
     </el-form-item>
+
   </el-form>
 </template>
 
@@ -66,12 +66,16 @@ export default {
         return {
           goodName: '',
           context: '',
-          goodType: {
-            typeName: ''
-          },
+          goodType: {},
           soldNum: '',
           status: ''
         }
+      }
+    },
+    typeList: {
+      type: Array,
+      default() {
+        return []
       }
     },
     onSubmit: {

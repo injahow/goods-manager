@@ -21,11 +21,20 @@
     />
 
     <el-table-column
-      prop="typeId"
+      prop="goodType"
       label="分类"
       width="140"
       sortable
-    />
+    >
+      <template slot-scope="scope">
+        <el-link
+          type="primary"
+          @click="findGoodByTypeId(scope.row.goodType.typeId)"
+        >
+          {{ scope.row.goodType.typeName }}
+        </el-link>
+      </template>
+    </el-table-column>
 
     <el-table-column
       prop="soldNum"
@@ -103,15 +112,12 @@ export default {
         params: { id: row.goodId }
       })
     },
-    // filterHandler(value, row, column) {
-    //   const property = column['property']
-    //   if (row[property]) {
-    //     return row[property].indexOf(value) > -1
-    //   } else {
-    //     return false
-    //   }
-    // },
-
+    findGoodByTypeId(typeId) {
+      this.$router.push({
+        name: 'good_index',
+        params: { typeId }
+      })
+    },
     handleClick(val) {
       this.$router.push({
         name: 'good_detail',

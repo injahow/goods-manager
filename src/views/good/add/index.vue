@@ -4,6 +4,7 @@
     <GoodSpuForm
       :form-data="good_form"
       :on-submit="onSubmit"
+      :type-list="type_list"
     />
 
   </div>
@@ -13,6 +14,7 @@
 
 import GoodSpuForm from '@/views/good/components/GoodSpuForm'
 import { addGood } from '@/api/good'
+import { getNameList } from '@/api/good_type'
 
 export default {
   name: 'GoodSpuAdd',
@@ -21,16 +23,22 @@ export default {
   },
   data() {
     return {
-      activeName: 'form',
-      url: '',
-      good_form: {}
+      good_form: {},
+      type_list: []
     }
+  },
+  mounted() {
+    getNameList().then((res) => {
+      this.type_list = res.data
+    })
   },
   methods: {
     onSubmit(GoodSpu) {
       addGood(GoodSpu).then((res) => {
-        this.$message('提交成功!')
-        this.$router.push({ name: 'GoodSpu_list' })
+        // this.$message(res.message)
+        if (res && res.code === 200) {
+          this.$router.push({ name: 'good_list' })
+        }
       })
     },
     resetValue(name) {
