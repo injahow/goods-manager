@@ -38,7 +38,7 @@
 
     <el-table-column
       prop="soldNum"
-      label="卖出"
+      label="销量"
       width="100"
       sortable
     />
@@ -52,7 +52,7 @@
 
     <el-table-column
       prop="context"
-      label="详情"
+      label="介绍"
       width="100"
       sortable
     />
@@ -79,7 +79,7 @@
         <el-button
           size="mini"
           @click="handleClick(scope.row)"
-        >查看</el-button>
+        >详情</el-button>
         <el-button
           size="mini"
           @click="handleEdit(scope.row)"
@@ -108,8 +108,8 @@ export default {
   methods: {
     handleEdit(row) {
       this.$router.push({
-        name: 'book_edit',
-        params: { id: row._id }
+        name: 'good_edit',
+        params: { id: row.goodId }
       })
     },
     // filterHandler(value, row, column) {
@@ -123,8 +123,8 @@ export default {
 
     handleClick(val) {
       this.$router.push({
-        name: 'book_detail',
-        params: { id: val._id }
+        name: 'good_detail',
+        params: { id: val.goodId }
       })
     }
   }

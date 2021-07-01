@@ -69,28 +69,30 @@ export const constantRoutes = [
         meta: { title: '商品列表', icon: 'table' }
       },
       {
-        path: 'index',
-        name: 'Index',
-        component: () => import('@/views/good/index'),
-        meta: { title: '商品引索', icon: 'table' }
-      },
-      {
         path: 'add',
         name: 'addTable',
         component: () => import('@/views/good/add'),
         meta: { title: '添加商品', icon: 'form' }
       },
       {
-        path: 'edit',
-        name: 'Edit',
-        component: () => import('@/views/good/edit'),
-        meta: { title: '修改商品', icon: 'form' }
-      },
-      {
         path: 'search',
         name: 'Search',
         component: () => import('@/views/good/search'),
         meta: { title: '搜索商品', icon: 'table' }
+      },
+      {
+        path: 'edit/:id',
+        name: 'good_edit',
+        component: () => import('@/views/good/edit'),
+        meta: { title: '修改商品', icon: 'form' },
+        hidden: true
+      },
+      {
+        path: 'detail/:id',
+        component: () => import('@/views/good/detail/index'),
+        name: 'good_detail',
+        meta: { title: '商品详情', icon: 'table' },
+        hidden: true
       }
     ]
   },
@@ -119,34 +121,6 @@ export const constantRoutes = [
         name: 'modify',
         component: () => import('@/views/good/list'),
         meta: { title: '修改类别', icon: 'form' }
-      }
-    ]
-  },
-
-  {
-    path: '/good_tag',
-    component: Layout,
-    redirect: '/good/table',
-    name: 'Example',
-    meta: { title: '标签管理', icon: 'el-icon-s-help' },
-    children: [
-      {
-        path: 'table',
-        name: 'Table',
-        component: () => import('@/views/good/list'),
-        meta: { title: '标签列表', icon: 'table' }
-      },
-      {
-        path: 'add',
-        name: 'addTable',
-        component: () => import('@/views/good/list'),
-        meta: { title: '添加标签', icon: 'form' }
-      },
-      {
-        path: 'modify',
-        name: 'modify',
-        component: () => import('@/views/good/list'),
-        meta: { title: '修改标签', icon: 'form' }
       }
     ]
   },
