@@ -48,10 +48,8 @@ npm run lint
 npm run lint -- --fix
 ```
 
-Refer to [Documentation](https://panjiachen.github.io/vue-element-admin-site/guide/essentials/deploy.html) for more information
-
 ## License
 
-[MIT](https://github.com/PanJiaChen/vue-admin-template/blob/master/LICENSE) license.
+[MIT](https://github.com/injahow/goods-manager/blob/master/LICENSE) license.
 
-Copyright (c) 2017-present PanJiaChen
+Copyright (c) 2021 injahow
