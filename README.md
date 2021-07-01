@@ -8,10 +8,10 @@ English | [简体中文](./README-zh.md)
 
 ```bash
 # clone the project
-git clone https://github.com/injahow/books-manager.git
+git clone https://github.com/injahow/goods-manager.git
 
 # enter the project directory
-cd books-manager
+cd goods-manager
 
 # install dependency
 npm install
