@@ -64,13 +64,13 @@ export const constantRoutes = [
     children: [
       {
         path: 'list',
-        name: 'List',
+        name: 'good_list',
         component: () => import('@/views/good/list'),
         meta: { title: '商品列表', icon: 'table' }
       },
       {
         path: 'add',
-        name: 'addTable',
+        name: 'add_good',
         component: () => import('@/views/good/add'),
         meta: { title: '添加商品', icon: 'form' }
       },
@@ -89,7 +89,7 @@ export const constantRoutes = [
       },
       {
         path: 'detail/:id',
-        component: () => import('@/views/good/detail/index'),
+        component: () => import('@/views/good/detail'),
         name: 'good_detail',
         meta: { title: '商品详情', icon: 'table' },
         hidden: true
@@ -107,19 +107,19 @@ export const constantRoutes = [
       {
         path: 'table',
         name: 'Table',
-        component: () => import('@/views/good/list'),
+        component: () => import('@/views/good_type/list'),
         meta: { title: '类别列表', icon: 'table' }
       },
       {
         path: 'add',
         name: 'addTable',
-        component: () => import('@/views/good/list'),
+        component: () => import('@/views/good_type/add'),
         meta: { title: '添加类别', icon: 'form' }
       },
       {
         path: 'modify',
         name: 'modify',
-        component: () => import('@/views/good/list'),
+        component: () => import('@/views/good_type/edit'),
         meta: { title: '修改类别', icon: 'form' }
       }
     ]

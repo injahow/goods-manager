@@ -1,8 +1,16 @@
 import request from '@/utils/request'
 
-export function getList() {
+export function getList(pageNo, pageSize) {
   return request({
     url: '/good/list',
+    method: 'get',
+    params: { pageNo, pageSize }
+  })
+}
+
+export function getGoodById(goodId) {
+  return request({
+    url: `/good/${goodId}`,
     method: 'get'
   })
 }
@@ -14,26 +22,26 @@ export function getDetail(goodId) {
   })
 }
 
-export function editGood(Good) {
+export function editGood(good) {
   return request({
     url: '/good/edit',
     method: 'post',
-    data: Good
+    data: good
   })
 }
 
-export function addGood(Good) {
+export function addGood(good) {
   return request({
     url: '/good/add',
     method: 'post',
-    data: Good
+    data: good
   })
 }
 
 export function deleteGood(goodId) {
   return request({
     url: '/good/del',
-    method: 'delete',
+    method: 'post',
     data: goodId
   })
 }

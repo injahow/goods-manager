@@ -21,20 +21,11 @@
     />
 
     <el-table-column
-      prop="goodName"
-      label="名称"
-      width="140"
-      sortable
-    />
-
-    <el-table-column
       prop="typeId"
       label="分类"
       width="140"
       sortable
-    >
-      分类{{ typeId }}
-    </el-table-column>
+    />
 
     <el-table-column
       prop="soldNum"
