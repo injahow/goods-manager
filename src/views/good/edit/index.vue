@@ -57,7 +57,6 @@ export default {
     getNameList().then((res) => {
       this.type_list = res.data
     })
-
   },
   methods: {
     resetValue(name) {
