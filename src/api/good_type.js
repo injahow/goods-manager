@@ -14,7 +14,15 @@ export function getNameList() {
   })
 }
 
-export function editGood(goodType) {
+export function getGoodTypeById(typeId) {
+  return request({
+    url: '/good_type/find',
+    method: 'get',
+    params: { typeId }
+  })
+}
+
+export function editGoodType(goodType) {
   return request({
     url: '/good_type/edit',
     method: 'post',
@@ -22,7 +30,7 @@ export function editGood(goodType) {
   })
 }
 
-export function addGood(goodType) {
+export function addGoodType(goodType) {
   return request({
     url: '/good_type/add',
     method: 'post',
@@ -30,7 +38,7 @@ export function addGood(goodType) {
   })
 }
 
-export function deleteGood(typeId) {
+export function deleteGoodType(typeId) {
   return request({
     url: '/good_type/del',
     method: 'post',

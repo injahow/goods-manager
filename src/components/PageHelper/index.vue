@@ -25,7 +25,7 @@ export default {
     },
     total: {
       type: Number,
-      default: 1
+      default: 0
     },
     reGetList: {
       type: Function,

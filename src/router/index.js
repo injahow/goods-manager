@@ -101,26 +101,27 @@ export const constantRoutes = [
     path: '/good_type',
     component: Layout,
     redirect: '/good/list',
-    name: 'Example',
+    name: 'good_type',
     meta: { title: '类别管理', icon: 'el-icon-s-help' },
     children: [
       {
-        path: 'table',
-        name: 'Table',
+        path: 'list',
+        name: 'good_type_list',
         component: () => import('@/views/good_type/list'),
         meta: { title: '类别列表', icon: 'table' }
       },
       {
         path: 'add',
-        name: 'addTable',
+        name: 'good_type_add',
         component: () => import('@/views/good_type/add'),
         meta: { title: '添加类别', icon: 'form' }
       },
       {
-        path: 'modify',
-        name: 'modify',
+        path: 'edit',
+        name: 'good_type_edit',
         component: () => import('@/views/good_type/edit'),
-        meta: { title: '修改类别', icon: 'form' }
+        meta: { title: '修改类别', icon: 'form' },
+        hidden: true
       }
     ]
   },

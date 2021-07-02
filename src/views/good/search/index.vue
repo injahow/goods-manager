@@ -1,11 +1,29 @@
 <template>
   <div class="app-container">
+    <el-form>
+      <el-form-item>
+        <el-row
+          type="flex"
+          class="row-bg"
+          justify="center"
+        >
+          <el-form-item>
+            <el-input v-model="name" placeholder="请输入商品名称" />
+          </el-form-item>
+          <el-form-item>
+            <el-button
+              type="primary"
+              @click="reGetList()"
+            >搜索</el-button>
+          </el-form-item>
+        </el-row>
+      </el-form-item>
+    </el-form>
     <GoodSpuTable
       :list-loading="listLoading"
       :table-data="tableData"
     />
     <PageHelper
-      :current-page="currentPage"
       :total="total"
       :re-get-list="reGetList"
     />
@@ -13,42 +31,39 @@
 </template>
 
 <script>
-import { search } from '@/api/good'
-// import { getOptions } from '@/api/user'
+import { searchGoodByName } from '@/api/good'
+import PageHelper from '@/components/PageHelper'
+import GoodSpuTable from '@/views/good/components/GoodSpuTable'
 
 export default {
+  components: {
+    GoodSpuTable, PageHelper
+  },
   data() {
     return {
       name: '',
       tableData: [],
       listLoading: false,
-      tags_filters: []
+      total: 0
     }
   },
   mounted() {
-    // 获取用户options
-    // getOptions('good').then(res => {
-    //   res.data.tags.forEach((i) => {
-    //     this.tags_filters.push({
-    //       'text': i,
-    //       'value': i
-    //     })
-    //   })
-    // })
   },
   methods: {
-    searchForm() {
+    reGetList(no, size) {
       this.tableData = []
       this.listLoading = true
-      search(this.name).then(res => {
-        this.tableData = res.data
+      searchGoodByName(this.name, no, size).then(res => {
+        this.tableData = res.data.list
+        this.total = res.data.count
         this.listLoading = false
+        if (res.data.count === 0) {
+          this.$message.info('未搜索到结果！')
+        }
       }).catch(() => {
-        this.$message('请求异常！')
         this.listLoading = false
       })
     },
-
     handleEdit(index, row) {
       this.$router.push({
         name: 'good_edit',

@@ -16,6 +16,14 @@ export function getGoodById(goodId) {
   })
 }
 
+export function searchGoodByName(name, pageNo, pageSize) {
+  return request({
+    url: '/good/search',
+    method: 'get',
+    params: { name, pageNo, pageSize }
+  })
+}
+
 export function getDetail(goodId) {
   return request({
     url: `/good/detail/${goodId}`,
