@@ -35,8 +35,8 @@ export default {
   methods: {
     onSubmit(GoodSpu) {
       addGood(GoodSpu).then((res) => {
-        // this.$message(res.message)
         if (res && res.code === 200) {
+          this.$message(res.message)
           this.$router.push({ name: 'good_list' })
         }
       })

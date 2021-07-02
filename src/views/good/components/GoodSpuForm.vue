@@ -10,20 +10,19 @@
       <el-button v-if="resetButtonShow" @click="resetValue('name')">重置</el-button>
     </el-form-item>
 
-    <el-form-item label="详情">
+    <el-form-item label="介绍">
       <el-input
         v-model="formData.context"
         type="textarea"
         size="500"
-        placeholder="请输入详情"
+        placeholder="请输入介绍"
         :autosize="{minRows:4,maxRows:8}"
       />
-      <el-button v-if="resetButtonShow" @click="resetValue('context')">重置</el-button>
     </el-form-item>
 
     <el-form-item label="类型">
       <el-select
-        v-model="formData.goodType.typeId"
+        v-model="formData.typeId"
         placeholder="请选择类型"
         style="width: 100%"
       >
@@ -34,18 +33,25 @@
           :value="item.typeId"
         />
       </el-select>
-
-      <el-button v-if="resetButtonShow" @click="resetValue('type_name')">重置</el-button>
     </el-form-item>
 
     <el-form-item label="销量">
       <el-input v-model="formData.soldNum" />
-      <el-button v-if="resetButtonShow" @click="resetValue('soldNum')">重置</el-button>
     </el-form-item>
 
     <el-form-item label="状态">
-      <el-input v-model="formData.status" />
-      <el-button v-if="resetButtonShow" @click="resetValue('status')">重置</el-button>
+      <el-select
+        v-model="formData.status"
+        placeholder="请选择状态"
+        style="width: 100%"
+      >
+        <el-option
+          v-for="item in statusOptions"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value"
+        />
+      </el-select>
     </el-form-item>
 
     <el-form-item>
@@ -66,7 +72,7 @@ export default {
         return {
           goodName: '',
           context: '',
-          goodType: {},
+          typeId: '',
           soldNum: '',
           status: ''
         }
@@ -86,17 +92,33 @@ export default {
       type: Boolean,
       default: false
     },
-    resetValue: {
-      type: Function,
-      default() {}
+    statusOptions: {
+      type: Array,
+      default() {
+        return [{
+          value: 1,
+          label: '上架'
+        }, {
+          value: 0,
+          label: '下架'
+        }, {
+          value: -1,
+          label: '删除'
+        }]
+      }
+    },
+    statusValue: {
+      type: String,
+      default: ''
     }
   },
   data() {
     return {
-      options: ''
+      status_value: this.formData.status
     }
   },
   mounted() {
+    this.status_value = this.formData.status
     /*
     getOptions('book').then(res => {
       this.options = res.data

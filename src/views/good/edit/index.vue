@@ -4,8 +4,6 @@
       :form-data="good_form"
       :on-submit="onSubmit"
       :type-list="type_list"
-      :reset-value="resetValue"
-      reset-button-show
     />
   </div>
 </template>
@@ -28,7 +26,6 @@ export default {
       type_list: [],
       onSubmit: (formName) => {
         // 判断修改项
-        console.log(formName)
         const res = compareForm(formName, this.old_good_form)
         if (res.is_changed) {
           const good = formName
@@ -59,9 +56,6 @@ export default {
     })
   },
   methods: {
-    resetValue(name) {
-      this.good_form[name] = this.old_good_form[name]
-    }
   }
 }
 </script>

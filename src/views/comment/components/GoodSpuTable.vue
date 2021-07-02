@@ -9,7 +9,7 @@
     <el-table-column
       prop="goodId"
       label="编号"
-      width="75"
+      width="50"
       sortable
     />
 
@@ -21,7 +21,6 @@
     />
 
     <el-table-column
-      prop="goodType"
       label="分类"
       width="140"
       sortable
@@ -45,17 +44,12 @@
 
     <el-table-column
       label="状态"
-      width="80"
+      width="60"
+      sortable
     >
       <template slot-scope="scope">
-        <el-tag v-if="scope.row.status==1" effect="plain">
-          上架
-        </el-tag>
-        <el-tag v-if="scope.row.status==0" effect="warning">
-          下架
-        </el-tag>
-        <el-tag v-if="scope.row.status==-1" effect="danger">
-          删除
+        <el-tag effect="plain">
+          {{ scope.row.status }}
         </el-tag>
       </template>
     </el-table-column>
@@ -64,45 +58,22 @@
       prop="context"
       label="介绍"
       width="100"
+      sortable
     />
 
     <el-table-column
       prop="createTime"
       label="创建时间"
       sortable
-      width="190"
-    >
-      <template slot-scope="scope">
-        <div class="block">
-          <el-date-picker
-            v-model="scope.row.createTime"
-            size="mini"
-            readonly
-            type="date"
-            format="yyyy 年 MM 月 dd 日"
-          />
-        </div>
-      </template>
-    </el-table-column>
+      width="130"
+    />
 
     <el-table-column
       prop="updateTime"
       label="更新时间"
       sortable
-      width="190"
-    >
-      <template slot-scope="scope">
-        <div class="block">
-          <el-date-picker
-            v-model="scope.row.updateTime"
-            size="mini"
-            readonly
-            type="date"
-            format="yyyy 年 MM 月 dd 日"
-          />
-        </div>
-      </template>
-    </el-table-column>
+      width="130"
+    />
 
     <el-table-column
       label="操作"
@@ -160,8 +131,3 @@ export default {
   }
 }
 </script>
-<style>
-.el-date-editor.el-input, .el-date-editor.el-input__inner {
-    width: 170px;
-}
-</style>

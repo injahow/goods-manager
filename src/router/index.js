@@ -126,6 +126,20 @@ export const constantRoutes = [
   },
 
   {
+    path: '/comment',
+    component: Layout,
+    redirect: '/comment/list',
+    children: [
+      {
+        path: 'table',
+        name: 'Table',
+        component: () => import('@/views/comment/list'),
+        meta: { title: '评论管理', icon: 'table' }
+      }
+    ]
+  },
+
+  {
     path: 'external-link',
     component: Layout,
     children: [
