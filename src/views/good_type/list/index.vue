@@ -34,12 +34,13 @@
         <template slot-scope="scope">
           <el-button
             size="mini"
-            @click="handleClick(scope.row)"
-          >详情</el-button>
-          <el-button
-            size="mini"
             @click="handleEdit(scope.row)"
           >编辑</el-button>
+          <el-button
+            type="danger"
+            size="mini"
+            @click="handleDelete(scope.row)"
+          >删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -48,7 +49,7 @@
 
 <script>
 
-import { getList } from '@/api/good_type'
+import { deleteGoodType, getList } from '@/api/good_type'
 
 export default {
   data() {
@@ -68,7 +69,20 @@ export default {
   },
   methods: {
     handleDelete(row) {
-
+      this.$confirm('是否删除?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        deleteGoodType(row.typeId).then((res) => {
+          this.$message(res.message)
+        })
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消删除'
+        })
+      })
     },
     handleEdit(row) {
       this.$router.push({

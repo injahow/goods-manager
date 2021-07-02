@@ -100,7 +100,7 @@ export const constantRoutes = [
   {
     path: '/good_type',
     component: Layout,
-    redirect: '/good/list',
+    redirect: '/good_type/list',
     name: 'good_type',
     meta: { title: '类别管理', icon: 'el-icon-s-help' },
     children: [
@@ -117,7 +117,7 @@ export const constantRoutes = [
         meta: { title: '添加类别', icon: 'form' }
       },
       {
-        path: 'edit',
+        path: 'edit/:id',
         name: 'good_type_edit',
         component: () => import('@/views/good_type/edit'),
         meta: { title: '修改类别', icon: 'form' },
@@ -132,8 +132,8 @@ export const constantRoutes = [
     redirect: '/comment/list',
     children: [
       {
-        path: 'table',
-        name: 'Table',
+        path: 'list',
+        name: 'comment',
         component: () => import('@/views/comment/list'),
         meta: { title: '评论管理', icon: 'table' }
       }
@@ -145,8 +145,8 @@ export const constantRoutes = [
     component: Layout,
     children: [
       {
-        path: 'https://github.com/injahow',
-        meta: { title: '关于作者', icon: 'link' }
+        path: 'https://github.com/injahow/goods-manager',
+        meta: { title: 'GitHub', icon: 'link' }
       }
     ]
   },

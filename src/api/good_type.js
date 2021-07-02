@@ -42,6 +42,6 @@ export function deleteGoodType(typeId) {
   return request({
     url: '/good_type/del',
     method: 'post',
-    data: typeId
+    data: { typeId }
   })
 }

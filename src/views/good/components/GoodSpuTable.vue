@@ -45,7 +45,7 @@
 
     <el-table-column
       label="状态"
-      width="80"
+      width="70"
     >
       <template slot-scope="scope">
         <el-tag v-if="scope.row.status==1" effect="plain">
@@ -106,7 +106,7 @@
 
     <el-table-column
       label="操作"
-      width="150"
+      width="230"
     >
       <template slot-scope="scope">
         <el-button
@@ -117,6 +117,11 @@
           size="mini"
           @click="handleEdit(scope.row)"
         >编辑</el-button>
+        <el-button
+          type="danger"
+          size="mini"
+          @click="handleDelete(scope.row)"
+        >删除</el-button>
       </template>
     </el-table-column>
 
@@ -156,6 +161,9 @@ export default {
         name: 'good_detail',
         params: { id: val.goodId }
       })
+    },
+    handleDelete(val) {
+
     }
   }
 }
