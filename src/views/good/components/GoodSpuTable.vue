@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="app-container">
     <el-table
       v-loading="listLoading"
       :data="tableData"
@@ -40,7 +40,7 @@
       <el-table-column
         prop="soldNum"
         label="销量"
-        width="100"
+        width="80"
         sortable
       />
 
@@ -57,13 +57,13 @@
 
       <el-table-column
         label="介绍"
-        width="100"
+        width="80"
       >
         <template slot-scope="scope">
           <el-button
+            size="mini"
             @click="dialogVisible = true; form_context = scope.row.context;"
           >查看</el-button>
-
         </template>
       </el-table-column>
 

@@ -21,7 +21,7 @@
 
       <el-table-column
         prop="member.memberName"
-        label="用户"
+        label="会员"
         width="100"
         sortable
       >
@@ -35,7 +35,7 @@
       <el-table-column
         prop="content"
         label="内容"
-        width="400"
+        width="600"
       />
 
       <el-table-column
@@ -57,7 +57,7 @@
 
       <el-table-column
         label="操作"
-        width="150"
+        width="90"
       >
         <template slot-scope="scope">
           <el-button

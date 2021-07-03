@@ -17,15 +17,21 @@
       <el-table-column
         prop="typeName"
         label="名称"
-        width="140"
+        width="300"
         sortable
       />
 
       <el-table-column
-        prop="typeDesc"
         label="介绍"
-        width="400"
-      />
+        width="100"
+      >
+        <template slot-scope="scope">
+          <el-button
+            size="mini"
+            @click="dialogVisible = true; form_context = scope.row.typeDesc;"
+          >查看</el-button>
+        </template>
+      </el-table-column>
 
       <el-table-column
         label="操作"
@@ -44,6 +50,18 @@
         </template>
       </el-table-column>
     </el-table>
+
+    <el-dialog
+      title="介绍"
+      :visible.sync="dialogVisible"
+      width="60%"
+      :before-close="handleClose"
+    >
+      <span>{{ form_context }}</span>
+      <span slot="footer" class="dialog-footer">
+        <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 
@@ -55,7 +73,8 @@ export default {
   data() {
     return {
       listLoading: true,
-      tableData: []
+      tableData: [],
+      dialogVisible: false
     }
   },
   mounted() {
@@ -76,6 +95,13 @@ export default {
       }).then(() => {
         deleteGoodType(row.typeId).then((res) => {
           this.$message(res.message)
+          this.listLoading = true
+          getList().then(res => {
+            this.tableData = res.data
+            this.listLoading = false
+          }).catch(() => {
+            this.listLoading = false
+          })
         })
       }).catch(() => {
         this.$message({
