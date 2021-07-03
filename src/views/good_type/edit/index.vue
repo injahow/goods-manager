@@ -9,7 +9,6 @@
     >
       <el-form-item label="名称">
         <el-input v-model="formData.typeName" />
-        <el-button v-if="resetButtonShow" @click="resetValue('name')">重置</el-button>
       </el-form-item>
 
       <el-form-item label="介绍">
@@ -24,7 +23,7 @@
 
       <el-form-item>
         <el-button type="primary" @click="onSubmit()">提交</el-button>
-        <el-button v-if="resetButtonShow" @click="onClose()">取消</el-button>
+        <el-button @click="onClose()">取消</el-button>
       </el-form-item>
 
     </el-form>

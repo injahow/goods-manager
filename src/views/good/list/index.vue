@@ -4,6 +4,7 @@
       :list-loading="listLoading"
       :table-data="tableData"
     />
+    <el-divider />
     <PageHelper
       :current-page="currentPage"
       :total="total"

@@ -10,14 +10,13 @@
       <el-table-column
         prop="typeId"
         label="编号"
-        width="75"
+        width="80"
         sortable
       />
 
       <el-table-column
         prop="typeName"
         label="名称"
-        width="300"
         sortable
       />
 
@@ -55,7 +54,6 @@
       title="介绍"
       :visible.sync="dialogVisible"
       width="60%"
-      :before-close="handleClose"
     >
       <span>{{ form_context }}</span>
       <span slot="footer" class="dialog-footer">
@@ -74,7 +72,8 @@ export default {
     return {
       listLoading: true,
       tableData: [],
-      dialogVisible: false
+      dialogVisible: false,
+      form_context: ''
     }
   },
   mounted() {

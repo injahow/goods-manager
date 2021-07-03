@@ -1,9 +1,29 @@
 <template>
   <div class="login-container">
+
+    <vue-particles
+      color="#fff"
+      :particle-opacity="0.7"
+      :particles-number="120"
+      shape-type="circle"
+      :particle-size="3"
+      lines-color="#fff"
+      :lines-width="0.6"
+      :line-linked="true"
+      :line-opacity="0.5"
+      :lines-distance="150"
+      :move-speed="1.5"
+      :hover-effect="true"
+      hover-mode="grab"
+      :click-effect="true"
+      click-mode="push"
+      class="lizi background"
+    />
+
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on" label-position="left">
 
       <div class="title-container">
-        <h3 class="title">商品管理后台</h3>
+        <h3 class="title">Goods Manager</h3>
       </div>
 
       <el-form-item prop="username">
@@ -43,11 +63,6 @@
 
       <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleLogin">Login</el-button>
 
-      <div class="tips">
-        <span style="margin-right:20px;">username: admin</span>
-        <span> password: 111111</span>
-      </div>
-
     </el-form>
   </div>
 </template>
@@ -74,8 +89,8 @@ export default {
     }
     return {
       loginForm: {
-        username: 'admin',
-        password: '111111'
+        username: '',
+        password: ''
       },
       loginRules: {
         username: [{ required: true, trigger: 'blur', validator: validateUsername }],
@@ -124,7 +139,14 @@ export default {
   }
 }
 </script>
-
+<style>
+.background {
+    width:100%;
+    height:100%;  /**宽高100%是为了图片铺满屏幕 **/
+    z-index:0;
+    position: absolute;
+}
+</style>
 <style lang="scss">
 /* 修复input 背景不协调 和光标变色 */
 /* Detail see https://github.com/PanJiaChen/vue-element-admin/pull/927 */

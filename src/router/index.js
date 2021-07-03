@@ -78,7 +78,7 @@ export const constantRoutes = [
         path: 'search',
         name: 'good_search',
         component: () => import('@/views/good/search'),
-        meta: { title: '搜索商品', icon: 'table' }
+        meta: { title: '搜索商品', icon: 'el-icon-search' }
       },
       {
         path: 'edit/:id',
@@ -102,7 +102,7 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/good_type/list',
     name: 'good_type',
-    meta: { title: '类别管理', icon: 'el-icon-s-help' },
+    meta: { title: '类别管理', icon: 'el-icon-s-order' },
     children: [
       {
         path: 'list',
@@ -135,7 +135,7 @@ export const constantRoutes = [
         path: 'list',
         name: 'comment',
         component: () => import('@/views/comment/list'),
-        meta: { title: '评论管理', icon: 'table' }
+        meta: { title: '评论管理', icon: 'el-icon-s-comment' }
       }
     ]
   },

@@ -1,5 +1,5 @@
 <template>
-  <div class="app-container">
+  <div>
     <el-table
       v-loading="listLoading"
       :data="tableData"
@@ -17,7 +17,6 @@
       <el-table-column
         prop="goodName"
         label="名称"
-        width="140"
         sortable
       />
 
@@ -40,6 +39,7 @@
       <el-table-column
         prop="soldNum"
         label="销量"
+        type="number"
         width="80"
         sortable
       />
@@ -185,7 +185,10 @@ export default {
     handleClick(val) {
       this.$router.push({
         name: 'good_detail',
-        params: { id: val.goodId }
+        params: {
+          id: val.goodId,
+          goodSpuData: val
+        }
       })
     },
     handleDelete(val) {
@@ -196,6 +199,14 @@ export default {
       }).then(() => {
         deleteGood(val.goodId).then((res) => {
           this.$message(res.message)
+          const new_table = []
+          this.tableData.forEach(i => {
+            console.log(i)
+            if (val.goodId !== i.goodId) {
+              new_table.push(i)
+            }
+          })
+          this.tableData = new_table
         })
       }).catch(() => {
         this.$message({

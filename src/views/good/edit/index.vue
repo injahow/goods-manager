@@ -46,16 +46,16 @@ export default {
   },
   mounted() {
     const id = this.$route.params.id
-    getGoodById(id)
-      .then((res) => {
-        this.old_good_form = res.data
-        this.good_form = Object.assign({}, this.old_good_form)
-      })
+    getGoodById(id).then((res) => {
+      this.old_good_form = res.data
+      this.good_form = Object.assign({}, this.old_good_form)
+    })
     getNameList().then((res) => {
       this.type_list = res.data
     })
   },
   methods: {
+
   }
 }
 </script>

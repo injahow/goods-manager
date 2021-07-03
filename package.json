@@ -1,7 +1,7 @@
 {
-  "name": "book-manager",
+  "name": "goods-manager",
   "version": "1.0.0",
-  "description": "A vue Book Manager with Element UI & axios & iconfont & permission control & lint",
+  "description": "A vue Goods Manager with Element UI & axios & iconfont & permission control & lint",
   "author": "injahow <i@injahow.com>",
   "scripts": {
     "dev": "vue-cli-service serve",
@@ -48,6 +48,7 @@
     "serve-static": "1.13.2",
     "svg-sprite-loader": "4.1.3",
     "svgo": "^2.3.1",
+    "vue-particles": "^1.0.9",
     "vue-template-compiler": "2.6.10"
   },
   "browserslist": [
