@@ -18,7 +18,7 @@ export function deleteCommentById(commentId) {
 
 export function deleteCommentsById(commentIds) {
   return request({
-    url: '/comment/del',
+    url: '/comment/del_all',
     method: 'post',
     data: commentIds
   })

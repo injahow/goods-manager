@@ -60,6 +60,8 @@ export default {
             this.$router.push({ name: 'good_type_list' })
           }
         })
+      } else {
+        this.$message('未修改内容!')
       }
     }
   }

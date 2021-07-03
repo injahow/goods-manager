@@ -35,11 +35,15 @@ export default {
   methods: {
     handleSizeChange(val) {
       // console.log(`每页 ${val} 条`)
-      this.reGetList(this.currentPage, val)
+      if (this.total !== 0) {
+        this.reGetList(this.currentPage, val)
+      }
     },
     handleCurrentChange(val) {
       // console.log(`当前页: ${val}`)
-      this.reGetList(val, this.pageSize)
+      if (this.total !== 0) {
+        this.reGetList(val, this.pageSize)
+      }
     }
   }
 }

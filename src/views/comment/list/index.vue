@@ -72,7 +72,7 @@
       v-show="showDelete"
       type="danger"
       size="mini"
-      @click="deleteByIds()"
+      @click="deleteByIds"
     >删除选中</el-button>
     <PageHelper
       :current-page="currentPage"
@@ -84,7 +84,7 @@
 
 <script>
 import PageHelper from '@/components/PageHelper'
-import { getList, deleteCommentById } from '@/api/comment'
+import { getList, deleteCommentById, deleteCommentsById } from '@/api/comment'
 
 export default {
   components: {
@@ -147,6 +147,23 @@ export default {
       this.commentIds = []
       val.forEach(row => {
         this.commentIds.push(row.commentId)
+      })
+    },
+    deleteByIds() {
+      this.$confirm('是否删除?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        deleteCommentsById(this.commentIds).then((res) => {
+          this.$message(res.message)
+          this.reGetList(this.pageNo, this.pageSize)
+        })
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消删除'
+        })
       })
     }
   }

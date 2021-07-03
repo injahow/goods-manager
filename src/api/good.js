@@ -24,6 +24,14 @@ export function searchGoodByName(name, pageNo, pageSize) {
   })
 }
 
+export function searchGoodByType(name, pageNo, pageSize) {
+  return request({
+    url: '/good/search_type',
+    method: 'get',
+    params: { name, pageNo, pageSize }
+  })
+}
+
 export function getDetail(goodId) {
   return request({
     url: `/good/detail/${goodId}`,
@@ -51,6 +59,6 @@ export function deleteGood(goodId) {
   return request({
     url: '/good/del',
     method: 'post',
-    data: goodId
+    data: { goodId }
   })
 }

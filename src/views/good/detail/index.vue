@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import { getDetail } from '@/api/good'
+import { getSameSku } from '@/api/good_sku'
 export default {
   data() {
     return {
@@ -35,8 +35,8 @@ export default {
     }
   },
   mounted() {
-    const goodId = this.$route.params.goodId
-    getDetail(goodId).then((res) => {
+    const goodId = this.$route.params.id
+    getSameSku(goodId).then(res => {
       this.tableData = [res.data]
     })
   }
