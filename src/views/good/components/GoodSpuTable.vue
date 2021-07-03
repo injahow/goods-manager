@@ -132,7 +132,6 @@
       title="介绍"
       :visible.sync="dialogVisible"
       width="30%"
-      :before-close="handleClose"
     >
       <span>{{ form_context }}</span>
       <span slot="footer" class="dialog-footer">

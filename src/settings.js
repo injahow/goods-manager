@@ -1,6 +1,6 @@
 module.exports = {
 
-  title: 'Book Manager',
+  title: 'Goods Manager',
 
   /**
    * @type {boolean} true | false

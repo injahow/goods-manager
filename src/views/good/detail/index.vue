@@ -1,5 +1,10 @@
 <template>
   <div class="app-container">
+    <el-button
+      type="primary"
+      @click="form_type='add';dialogFormVisible=true;sku_form = {}"
+    >添加系列</el-button>
+
     <el-table
       v-loading="listLoading"
       :data="tableData"
@@ -42,7 +47,14 @@
         prop="paramsMap"
         label="参数"
         width="100"
-      />
+      >
+        <template slot-scope="scope">
+          <el-button
+            size="mini"
+            @click="dialogVisible = true; form_context = scope.row.paramsMap;"
+          >查看</el-button>
+        </template>
+      </el-table-column>
 
       <el-table-column
         prop="originalPrice"
@@ -53,6 +65,12 @@
       <el-table-column
         prop="sellPrice"
         label="售价"
+        width="100"
+      />
+
+      <el-table-column
+        prop="goodStock"
+        label="库存"
         width="100"
       />
 
@@ -101,7 +119,7 @@
         <template slot-scope="scope">
           <el-button
             size="mini"
-            @click="handleEdit(scope.row)"
+            @click="handleEdit(scope.row);form_type='edit';dialogFormVisible=true"
           >编辑</el-button>
           <el-button
             type="danger"
@@ -111,18 +129,71 @@
         </template>
       </el-table-column>
     </el-table>
+
+    <el-dialog
+      title="参数"
+      :visible.sync="dialogVisible"
+      width="60%"
+    >
+      <span>{{ form_context }}</span>
+      <span slot="footer" class="dialog-footer">
+        <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+      </span>
+    </el-dialog>
+
+    <el-dialog title="SKU数据信息" :visible.sync="dialogFormVisible">
+      <el-form :model="sku_form">
+        <el-form-item label="名称" :label-width="formLabelWidth">
+          <el-input v-model="sku_form.skuName" autocomplete="off" />
+        </el-form-item>
+
+        <el-form-item label="图片" :label-width="formLabelWidth">
+          <el-input v-model="sku_form.skuImg" autocomplete="off" />
+        </el-form-item>
+
+        <el-form-item label="参数" :label-width="formLabelWidth">
+          <el-input v-model="sku_form.paramsMap" autocomplete="off" />
+        </el-form-item>
+
+        <el-form-item label="原价" :label-width="formLabelWidth">
+          <el-input v-model="sku_form.originalPrice" autocomplete="off" />
+        </el-form-item>
+
+        <el-form-item label="售价" :label-width="formLabelWidth">
+          <el-input v-model="sku_form.sellPrice" autocomplete="off" />
+        </el-form-item>
+
+        <el-form-item label="库存" :label-width="formLabelWidth">
+          <el-input v-model="sku_form.goodStock" autocomplete="off" />
+        </el-form-item>
+
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="dialogFormVisible = false">取 消</el-button>
+        <el-button type="primary" @click="sendForm()">确 定</el-button>
+      </div>
+    </el-dialog>
+
   </div>
 </template>
 
 <script>
-import { deleteSku, getSameSku } from '@/api/good_sku'
+import { deleteSku, getSameSku, getSkuById, editSku, addSku } from '@/api/good_sku'
+import { compareForm } from '@/utils/check-changes'
 
 export default {
   name: 'GoodDetail',
   data() {
     return {
       listLoading: false,
-      tableData: {}
+      tableData: {},
+      dialogVisible: false,
+      form_context: '',
+      dialogFormVisible: false,
+      sku_form: {},
+      old_good_form: {},
+      formLabelWidth: '100',
+      form_type: ''
     }
   },
   mounted() {
@@ -134,11 +205,11 @@ export default {
     })
   },
   methods: {
-    handleEdit(row) {
-      // this.$router.push({
-      //   name: 'sku_edit',
-      //   params: { id: row.skuId }
-      // })
+    handleEdit(val) {
+      getSkuById(val.skuId).then(res => {
+        this.sku_form = res.data
+        this.old_good_form = Object.assign({}, this.sku_form)
+      })
     },
     handleDelete(val) {
       this.$confirm('是否删除?', '提示', {
@@ -148,6 +219,12 @@ export default {
       }).then(() => {
         deleteSku(val.skuId).then((res) => {
           this.$message(res.message)
+          const id = this.$route.params.id
+          getSameSku(id).then(res => {
+            if (res && res.code === 200) {
+              this.tableData = res.data
+            }
+          })
         })
       }).catch(() => {
         this.$message({
@@ -155,6 +232,43 @@ export default {
           message: '已取消删除'
         })
       })
+    },
+    sendForm() {
+      if (this.form_type === 'edit') {
+        const res = compareForm(this.sku_form, this.old_good_form)
+        if (res.is_changed) {
+          editSku(this.sku_form).then(res => {
+            if (res && res.code === 200) {
+              this.dialogFormVisible = false
+              this.$message(res.message)
+              // 回显
+              const id = this.$route.params.id
+              getSameSku(id).then(res => {
+                if (res && res.code === 200) {
+                  this.tableData = res.data
+                }
+              })
+            }
+          })
+        } else {
+          this.$message('未修改内容!')
+        }
+      } else {
+        this.sku_form.goodId = this.$route.params.id
+        addSku(this.sku_form).then(res => {
+          if (res && res.code === 200) {
+            this.dialogFormVisible = false
+            this.$message(res.message)
+            // 回显
+            const id = this.$route.params.id
+            getSameSku(id).then(res => {
+              if (res && res.code === 200) {
+                this.tableData = res.data
+              }
+            })
+          }
+        })
+      }
     }
   }
 }
