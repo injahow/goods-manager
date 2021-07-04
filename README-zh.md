@@ -1,7 +1,5 @@
 # goods-manager
 
-> 这是一个极简的 vue admin 管理后台。它只包含了 Element UI & axios & iconfont & permission control & lint，这些搭建后台必要的东西。
-
 ## Build Setup
 
 ```bash
@@ -48,10 +46,6 @@ npm run lint
 # 代码格式检查并自动修复
 npm run lint -- --fix
 ```
-
-## Demo
-
-![demo](https://github.com/PanJiaChen/PanJiaChen.github.io/blob/master/images/demo.gif)
 
 ## Browsers support
 
