@@ -32,10 +32,7 @@ export default {
           editGood(good).then((res) => {
             this.$message(res.message)
             setTimeout(() => {
-              this.$router.push({
-                name: 'good_detail',
-                params: { id: this.old_good_form.goodId }
-              })
+              this.$router.push({ name: 'good_list' })
             }, 1000)
           })
         } else {

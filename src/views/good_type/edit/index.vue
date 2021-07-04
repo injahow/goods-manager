@@ -62,6 +62,9 @@ export default {
       } else {
         this.$message('未修改内容!')
       }
+    },
+    onClose() {
+      this.$router.go(-1)
     }
   }
 }
