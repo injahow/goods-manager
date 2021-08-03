@@ -7,7 +7,7 @@
 git clone https://github.com/injahow/goods-manager.git
 
 # 进入项目目录
-cd vue-admin-template
+cd goods-manager
 
 # 安装依赖
 npm install
